@@ -1,12 +1,23 @@
+#!/bin/bash
+#SBATCH -J G4h2o
+#SBATCH -p shortjobs
+#SBATCH -t 10:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --mem=34G
+#SBATCH -o /home/manoja450/G4WithoutLeadSheilding/MODULE2/CUSTOMOPTICALMODULE2/G4d2o/SLURMOUT/slurm-%j.out
+#SBATCH -e /home/manoja450/G4WithoutLeadSheilding/MODULE2/CUSTOMOPTICALMODULE2/G4d2o/SLURMOUT/slurm-%j.out
+
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 
-OUTPUT_DIR="/home/manoja450/G4WithoutLeadSheilding/MODULE2/CUSTOMOPTICALMODULE2/G4d2o/OUTPUT/run_${TIMESTAMP}"
-SLURM_DIR="/home/manoja450/G4WithoutLeadSheilding/MODULE2/CUSTOMOPTICALMODULE2/G4d2o/SLURMOUT"
+BASE_DIR="/home/manoja450/G4WithoutLeadSheilding/MODULE2/CUSTOMOPTICALMODULE2/G4d2o"
+OUTPUT_DIR="${BASE_DIR}/OUTPUT/run_${TIMESTAMP}"
+SLURM_DIR="${BASE_DIR}/SLURMOUT"
 
 mkdir -p ${OUTPUT_DIR}
 mkdir -p ${SLURM_DIR}
 
-cd /home/manoja450/G4WithoutLeadSheilding/MODULE2/CUSTOMOPTICALMODULE2/G4d2o
+cd ${BASE_DIR}
 
 export LD_LIBRARY_PATH=""
 export ROOTSYS="/usr"
@@ -35,15 +46,9 @@ echo "Simulation started at $(date)"
 echo "Output directory: ${OUTPUT_DIR}"
 echo "========================================="
 
-# Create proper Geant4 input file
-echo "/run/beamOn 1000" > ${OUTPUT_DIR}/input.txt
+echo "/run/beamOn" > ${OUTPUT_DIR}/input.txt
 
-# Run simulation
 ./build/G4d2o < ${OUTPUT_DIR}/input.txt > ${OUTPUT_DIR}/simulation.log 2>&1
-
-# Save a copy of the slurm output file
-cp ${SLURM_SUBMIT_DIR}/slurm-${SLURM_JOB_ID}.out \
-   ${SLURM_DIR}/slurm-${SLURM_JOB_ID}_${TIMESTAMP}.out
 
 echo "========================================="
 echo "Simulation finished at $(date)"
