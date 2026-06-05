@@ -1,0 +1,18 @@
+module purge
+
+module load gcc/11.2.0
+module load cmake/3.27.7
+module load libicu/58.2
+module load xerces-c/3.2.5
+module load expat/2.5.0
+module load openmpi/5.0.5
+module load geant4/11.4.0
+module load root/6.26.10
+
+cmake .. \
+  -DEXPAT_INCLUDE_DIR=/cm/shared/apps_local/expat/2.5.0-gcc/include \
+  -DEXPAT_LIBRARY=/cm/shared/apps_local/expat/2.5.0-gcc/lib/libexpat.so \
+  -DXercesC_INCLUDE_DIR=/cm/shared/apps_local/xerces-c/3.2.5/include \
+  -DXercesC_LIBRARY=/cm/shared/apps_local/xerces-c/3.2.5/lib/libxerces-c.so
+
+make -j4
