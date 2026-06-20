@@ -16,3 +16,6 @@ cmake .. \
   -DXercesC_LIBRARY=/cm/shared/apps_local/xerces-c/3.2.5/lib/libxerces-c.so
 
 make -j4
+
+TO SAVE SIMULATION OUTPUT VERBOSE
+./build/G4d2o > simulation_output.log 2>&1
