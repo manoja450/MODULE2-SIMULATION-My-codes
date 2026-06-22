@@ -24,7 +24,8 @@ USE tmux to run python script so it will run even you disconnect from ssh:
 
 tmux new -s capture
 python analyze_captures.py
-# Ctrl+B(press ,release), D (press again) to detach
+
+# Ctrl+B(press, release), D (press again) to detach
 # Reattach later: tmux attach -t capture
 
 Reattach to your tmux session to see if it's finished:
