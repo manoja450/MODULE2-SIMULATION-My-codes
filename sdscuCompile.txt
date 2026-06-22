@@ -19,3 +19,14 @@ make -j4
 
 TO SAVE SIMULATION OUTPUT VERBOSE
 ./build/G4d2o > simulation_output.log 2>&1
+
+USE tmux to run python script so it will run even you disconnect from ssh:
+
+tmux new -s capture
+python analyze_captures.py
+# Ctrl+B(press ,release), D (press again) to detach
+# Reattach later: tmux attach -t capture
+
+Reattach to your tmux session to see if it's finished:
+tmux attach -t capture
+
