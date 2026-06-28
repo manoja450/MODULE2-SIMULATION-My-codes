@@ -31,3 +31,5 @@ python analyze_captures.py
 Reattach to your tmux session to see if it's finished:
 tmux attach -t capture
 
+SLURM JOB: sbatch submit_analysisCaptures.sh
+
