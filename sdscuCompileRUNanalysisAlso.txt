@@ -39,10 +39,6 @@ STEP1:Get a compute node
 
 srun --partition=longjobs --time=20:30:00 --mem=130G --cpus-per-task=4 --pty bash
 
-STEP2. Rebuild there
-
-cd ~/G4d2oM2NeutronCaptureVERBOSE
-
 rm -rf build
 mkdir build
 cd build
