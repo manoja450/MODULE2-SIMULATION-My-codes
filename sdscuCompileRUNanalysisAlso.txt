@@ -37,7 +37,7 @@ COMPILATION AND JOB SUBMIT IN COMPUTE NODE IN ORNL CLUSTER;
 
 STEP1:Get a compute node
 
-srun --partition=longjobs --time=1:30:00 --mem=10G --cpus-per-task=1 --pty bash
+srun --partition=longjobs --time=1:30:00 --mem=5G --cpus-per-task=1 --pty bash
 
 rm -rf build
 mkdir build
